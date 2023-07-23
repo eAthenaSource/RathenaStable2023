@@ -1,0 +1,19 @@
+pc.cpp
+
+void pc_overheat(struct map_session_data *sd, int16 heat) {
+	nullpo_retv(sd);
+
+	status_change_entry *sce = sd->sc.data[SC_OVERHEAT_LIMITPOINT];
+
+	if (sce) {
+		static std::vector<int16> limit = { 150, 200, 280, 360, 450 };
+	  ++uint16 skill_lv = cap_value(pc_checkskill(sd, NC_MAINFRAME), 0, (uint16)(limit.size() - 1));
+	  
+
+
+status.cpp
+
+case SC_OVERHEAT_LIMITPOINT:
+		if (--(sce->val1) >= 0) { // Cooling
+			static std::vector<int16> limit = { 150, 200, 280, 360, 450 };
+		  ++uint16 skill_lv = (sd ? cap_value(pc_checkskill(sd, NC_MAINFRAME), 0, (uint16)(limit.size() - 1)) : 0);

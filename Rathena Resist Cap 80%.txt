@@ -1,0 +1,89 @@
+Resist Default 100%
+
+//SUB ELE
+case SP_SUBELE: // bonus2 bSubEle,e,x;
+		PC_BONUS_CHK_ELEMENT(type2,SP_SUBELE);
+		if(sd->state.lr_flag != 2)
+	  -	sd->indexed_bonus.subele_script[type2] += val;
+      + sd->indexed_bonus.subele_script[type2] = min(sd->indexed_bonus.subele_script[type2]+val, 80); // 80%
+		break;
+
+//SUB RACE		
+case SP_SUBRACE: // bonus2 bSubRace,r,x;
+		PC_BONUS_CHK_RACE(type2,SP_SUBRACE);
+		if(sd->state.lr_flag != 2)
+	  - sd->indexed_bonus.subrace[type2]+=val;
+      + sd->indexed_bonus.subrace[type2] = min(sd->indexed_bonus.subrace[type2]+val, 80); // 80%
+		break;
+case SP_SUBRACE2: // bonus2 bSubRace2,mr,x;
+		PC_BONUS_CHK_RACE2(type2,SP_SUBRACE2);
+		if(sd->state.lr_flag != 2)
+	  - sd->indexed_bonus.subrace2[type2]+=val;
+	  + sd->indexed_bonus.subrace2[type2] = min(sd->indexed_bonus.subrace2[type2]+val, 80); // 80%
+		break;
+		
+//SUB CLASS		
+case SP_SUBCLASS: // bonus2 bSubClass,c,x;
+		PC_BONUS_CHK_CLASS(type2,SP_SUBCLASS);
+		if(sd->state.lr_flag != 2)
+	  - sd->indexed_bonus.subclass[type2]+=val;
+      + sd->indexed_bonus.subclass[type2] = min(sd->indexed_bonus.subclass[type2]+val, 80); // 80%
+		break;
+		
+//SUB SIZE		
+case SP_SUBSIZE: // bonus2 bSubSize,s,x;
+		PC_BONUS_CHK_SIZE(type2,SP_SUBSIZE);
+		if(sd->state.lr_flag != 2)
+	  - sd->indexed_bonus.subsize[type2]+=val;
+	  + sd->indexed_bonus.subsize[type2] = min(sd->indexed_bonus.subsize[type2]+val, 80); // 80%
+		break;
+case SP_MAGIC_SUBSIZE: // bonus2 bMagicSubSize,s,x;
+		PC_BONUS_CHK_SIZE(type2,SP_MAGIC_SUBSIZE);
+		if(sd->state.lr_flag != 2)
+	  - sd->indexed_bonus.magic_subsize[type2]+=val;
+	  + sd->indexed_bonus.magic_subsize[type2] = min(sd->indexed_bonus.magic_subsize[type2]+val, 80); // 80%
+		break;
+
+//ATK DEF
+case SP_CRITICAL_DEF:
+		if(sd->state.lr_flag != 2)
+      - sd->bonus.critical_def += val;
+	  + sd->bonus.critical_def = min(sd->bonus.critical_def+val, 80); // 80%
+		break;
+case SP_NEAR_ATK_DEF:
+	    if(sd->state.lr_flag != 2)
+	  - sd->bonus.near_attack_def_rate += val;
+	  + sd->bonus.near_attack_def_rate = min(sd->bonus.near_attack_def_rate+val, 80); // 80%
+		break;
+case SP_LONG_ATK_DEF:
+		if(sd->state.lr_flag != 2)
+	  - sd->bonus.long_attack_def_rate += val;
+	  + sd->bonus.long_attack_def_rate = min(sd->bonus.long_attack_def_rate+val, 80); // 80%
+		break;
+case SP_MAGIC_ATK_DEF: // Magic Defense
+		if(sd->state.lr_flag != 2)
+	  - sd->bonus.magic_def_rate += val;
+	  + sd->bonus.magic_def_rate = min(sd->bonus.magic_def_rate+val, 50);
+		break;
+case SP_MISC_ATK_DEF:
+		if(sd->state.lr_flag != 2)
+	  - sd->bonus.misc_def_rate += val;
+	  + sd->bonus.misc_def_rate = min(sd->bonus.misc_def_rate+val, 80); // 80%
+		break;
+
+//DAMAGE RETURN	
+case SP_SHORT_WEAPON_DAMAGE_RETURN:
+		if(sd->state.lr_flag != 2)
+	  - sd->bonus.short_weapon_damage_return += val;
+	  + sd->bonus.short_weapon_damage_return = min(sd->bonus.short_weapon_damage_return+val, 80); // 80%
+		break;
+case SP_LONG_WEAPON_DAMAGE_RETURN:
+		if(sd->state.lr_flag != 2)
+	  - sd->bonus.long_weapon_damage_return += val;
+	  + sd->bonus.long_weapon_damage_return = min(sd->bonus.long_weapon_damage_return+val, 80); // 80%
+		break;
+case SP_MAGIC_DAMAGE_RETURN: //AppleGirl Was Here
+		if(sd->state.lr_flag != 2)
+	  - sd->bonus.magic_damage_return += val;
+	  + sd->bonus.magic_damage_return = min(sd->bonus.magic_damage_return+val, 80); // 80%
+		break;
